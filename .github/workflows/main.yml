@@ -3,6 +3,7 @@ name : Test, Build, and Deploy, | Modul 01 - Lab2.2 Senior Project
 on :
   push:
     branches: [main]
+
 jobs:
   test-build:
     runs-on: ubuntu-latest
@@ -35,7 +36,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        password :  ${{ secrets.Password }}
+        password :  ${{ secrets.PASSWORD }}
         port :  ${{ secrets.PORT }}
         script: |
           eval "$(ssh-agent -s)"
@@ -47,7 +48,6 @@ jobs:
             mkdir -p ~/senpro/460553/modul01;
             cd ~/senpro/460553/modul01;
             git clone git@github.com:MuhamadThoriqAhnaf/senpro-github-action.git;
-            cd ~/senpro/460553/modul01/senpro-github-action;
             echo "Install Package dan Build Project";
             npm install;
             npm run build;
