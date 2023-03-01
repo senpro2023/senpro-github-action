@@ -17,7 +17,6 @@ jobs:
         uses : actions/setup-node@v2
         with :
           node-version: ${{ matrix.node-version }}
-<<<<<<< HEAD
           cache: "npm" 
       - run : npm i
       - run : npm run build 
@@ -47,8 +46,3 @@ jobs:
           npm install
           npm run build
 
-=======
-          cache: "npm"
-      - run : npm i
-      - run : npm run build 
->>>>>>> 0651f3bb51272166fef677b8d74b21fe2478549f
