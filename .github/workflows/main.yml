@@ -1,14 +1,17 @@
-name: Test, Build, and Deploy | Modul 01 - Lab2.2 Senior Project 
+name: Test, Build, and Deploy | Modul 02 - Lab2.2 Senior Project 
+
 on:
    push:
         branches: [main] 
+
 jobs:
-    test-build:
+   test-build:
         runs-on: ubuntu-latest
 
 	strategy:
         matrix:
             node-version: [16.x]
+
         steps:
             - uses: actions/checkout@v2
             - name: Testing Build pre-Deploy
