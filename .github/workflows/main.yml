@@ -21,3 +21,42 @@ jobs:
           cache: "npm"
       - run : npm i
       - run : npm run build
+  deploy:
+    needs: test-build
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix: 
+        node-version: [16.x]
+
+    steps:
+      - name: Build app on VM
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          password: ${{secrets.PASSWORD}}
+          port: ${{secrets.PORT}}
+          script: |
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/senpro-ssh-19
+            echo "Cek folder project";
+            [ ! -d "/home/modul2/senpro-github-action/" ] &&
+              {
+                echo "Repository belum di-clone. Cloning...";
+                mkdir -p ~/modul2;
+                cd ~/modul02;
+                git clone https://github.com/ChristinaAngraeniP/senpro-github-action.git;
+                echo "Install Package dan Build Project";
+                npm install;
+                npm run build;
+              }||
+              {
+                echo "Repository sudah ada. Building...";
+                cd ~/modul2/senpro-github-action/;
+                git restore .;
+                git pull origin main;
+                echo "Install Package dan Build Project";
+                npm install;
+                npm run build;
+              }                          
