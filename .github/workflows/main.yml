@@ -1,4 +1,4 @@
-name: Test, Build, and Deploy | Modul 01 - Lab2.2 Senior Project
+name: Test, Build, and Deploy | Modul 01 - Lab 2.2 Senior Project
 on:
   push:
     branches: [main]
