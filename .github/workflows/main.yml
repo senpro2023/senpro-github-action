@@ -46,6 +46,7 @@ jobs:
                     {
                         echo "Repository belum di clone. Cloning...";
                         mkdir -p ~/senpro/473997/modul02;
+                        cd ~/senpro/473997/modul02
                         git clone git@github.com:hieraar/senpro-github-action.git;
                     } ||
                     {
