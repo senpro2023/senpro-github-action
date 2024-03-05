@@ -1,8 +1,8 @@
-name: Test, Build and Deploy | Modul 01 - Lab2.2 Senior Project
+name : Test, Build, and Deploy | Modul 01 - Lab2.2 Sebior Project
 
 on:
   push:
-      branches: [main]
+    branches: [main]
 
 jobs:
   test-build:
@@ -11,9 +11,9 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-
+    
     steps:
-      - uses: actions/checkout@v2
+      - uses: action/checkout@v2
       - name: Testing Build pre-Deploy
         uses: actions/setup-node@v2
         with:
@@ -21,4 +21,3 @@ jobs:
           cache: "npm"
       - run: npm i
       - run: npm run build
-
